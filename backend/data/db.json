@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": "vCXFeVAIfbV3_lEpU52Sc",
+      "fullName": "akande Samad",
+      "email": "akandesamad26@email.com",
+      "password": "$2b$10$EgMpvFwCiEhj2.du1JmZz.XyXD2ru/XaBOmgz3l72vQy/SfAc/X4q",
+      "createdAt": "2025-10-31T12:32:12.140Z"
+    },
+    {
+      "id": "581UpWoOVjDLskaXaydHg",
+      "fullName": "Damsacool",
+      "email": "damsacool26@gmail.com",
+      "password": "$2b$10$rJlAdB5gdw1DuuKIub1XnO3qkeAX8fMAi0ZEPNpUHQNTXernRUPGy",
+      "createdAt": "2025-11-01T16:10:57.682Z"
+    },
+    {
+      "id": "M7ITys4vZenBpupfkWQ8I",
+      "fullName": "Aliyat",
+      "email": "aliyat26@gmail.com",
+      "password": "$2b$10$oOmyOpywc.YD7FnCjASPTuISl0.Xsx3XPneLILP.KwYpMe8xvsCC.",
+      "createdAt": "2025-11-01T16:39:46.198Z"
+    },
+    {
+      "id": "NWfhsvCBAmRYvW0Y-hBpl",
+      "fullName": "Adewale ayuba",
+      "email": "adewaleayuba26@gmail.com",
+      "password": "$2b$10$zc5Ay02p.76cN1vPFuCwPu6CukXEg9Bhpyj4KdrmV1A6fXvhuyeIG",
+      "createdAt": "2025-11-01T23:18:29.257Z"
+    }
+  ],
+  "files": [
+    {
+      "id": "4CCBJhVzCxduBfpd1OSiC",
+      "filename": "4CCBJhVzCxduBfpd1OSiC.pdf",
+      "originalname": "AAC_Anambra_Manifesto_2025.pdf",
+      "size": 1615239,
+      "mimeType": "application/pdf",
+      "uploadDate": "2025-11-01T16:53:47.763Z",
+      "ownerId": "M7ITys4vZenBpupfkWQ8I"
+    },
+    {
+      "id": "2BLq-5J8Fy7RUM7ttYrcg",
+      "filename": "2BLq-5J8Fy7RUM7ttYrcg.png",
+      "originalname": "The Dossier.png",
+      "size": 1381029,
+      "mimeType": "image/png",
+      "uploadDate": "2025-11-01T17:02:43.161Z",
+      "ownerId": "M7ITys4vZenBpupfkWQ8I"
+    }
+  ]
+}
