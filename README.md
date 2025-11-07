@@ -1,130 +1,148 @@
-# SecureCloud - Modern Cloud Storage Solution
+# SecureCloud 🔐
 
-A secure, user-friendly cloud storage platform built with React.
+A personal project I built for my FYP and to learn full-stack development - a secure cloud storage app where files are encrypted on your device before uploading. Your data, your key, truly private.
 
-## Current Features (as of October 30, 2025)
 
-### Landing Page
-- Modern, responsive design with gradient background
-- Navigation bar with Home, Features, About, and Login
-- Hero section with main messaging
-- Styled call-to-action buttons
-  - "Get Started" (light teal)
-  - "Login" (red)
-- Feature cards showcasing key benefits:
-  - Strong Privacy
-  - Anytime Access
-  - Fast & Reliable
-  - Easy File Management
+### Key Features
 
-### Authentication
-- Login page with:
-  - Email input
-  - Password input
-  - Login button
-  - "Forgot Password?" link
-  - Sign up redirect
-- Registration page with:
-  - Full name input
-  - Email input
-  - Password input
-  - Password confirmation
-  - Sign up button
-  - Login redirect
+** Client-Side Encryption**
+- Files are encrypted with AES-256 on your browser using your personal passphrase
+- The passphrase never leaves your device - even I can't access your files
+- Optional passphrase saving per user (stored locally)
 
-### Dashboard
-- Sidebar navigation with:
-  - SecureCloud logo
-  - Dashboard link
-  - Profile link
-  - Settings link
-  - Logout option
-- Main content area featuring:
-  - Welcome header with notification bell
-  - File upload section
-  - File listing table showing:
-    - File name
-    - Size
-    - Upload date
-    - Download/Delete actions
+** User Authentication**
+- JWT-based login/registration
+- Email verification with tokens
+- Password reset functionality (backend ready)
+- Rate limiting to prevent brute force attacks
 
-## Tech Stack
-- React.js for frontend
+** Cloud Storage**
+- Files stored securely in AWS S3
+- Automatic fallback to local storage if S3 unavailable
+- File size validation (25MB limit)
+- Download and delete operations
+
+** Clean UI**
+- Modern, responsive design
+- Dashboard with file management
+- Real-time file list updates
+- User-specific passphrase storage
+
+### Tech Stack
+
+**Frontend**
+- React (Create React App)
 - React Router for navigation
-- CSS for styling (no external UI libraries)
+- CryptoJS for AES encryption
+- Axios for API calls
+- Custom CSS (no UI frameworks)
 
-## Next Steps
-- Backend integration
-- File upload functionality
-- User authentication implementation
-- Database integration
-- Cloud storage connection
+**Backend**
+- Node.js + Express
+- MongoDB Atlas for data storage
+- Mongoose for database modeling
+- AWS S3 SDK for file storage
+- JWT for authentication
+- bcrypt for password hashing
+- Nodemailer for email verification
+- express-rate-limit for security
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Infrastructure**
+- MongoDB Atlas (free M0 cluster)
+- AWS S3 (eu-north-1 region)
+- Deployed on Render (backend) + Vercel (frontend)
 
-## Available Scripts
+## How It Works
 
-In the project directory, you can run:
+1. **Register** → Create account with email verification
+2. **Set Passphrase** → Choose your encryption key (never sent to server)
+3. **Upload** → Files encrypted in browser, then uploaded to S3
+4. **Download** → Files retrieved from S3, decrypted in browser with your passphrase
+5. **Delete** → Removes both S3 file and database record
 
-### `npm start`
+## Setup Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
+- Node.js (v14+)
+- MongoDB Atlas account
+- AWS account with S3 bucket
+- SMTP credentials (Ethereal for testing)
+### Prerequisites
+- Node.js (v14+)
+- MongoDB Atlas account
+- AWS account with S3 bucket
+- SMTP credentials (Ethereal for testing)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Local Development
 
-### `npm test`
+1. **Clone the repository**
+```bash
+git clone https://github.com/Damsacool/SecureCloud.git
+cd SecureCloud
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Setup Backend**
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Edit .env with your credentials
+npm start
+```
 
-### `npm run build`
+3. **Setup Frontend**
+```bash
+cd frontend
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Visit** `http://localhost:3000`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+See `AWS_S3_SETUP.md` and `MONGODB_SETUP.md` for detailed setup guides.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## What I Learned
 
-### `npm run eject`
+Building this project taught me:
+- How client-side encryption actually works
+- JWT authentication and security best practices
+- AWS S3 SDK integration
+- MongoDB schema design with Mongoose
+- Email verification flows with tokens
+- Rate limiting and input validation
+- Full-stack deployment (Render + Vercel)
+- Git workflow and version control
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Security Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-  Client-side AES-256 encryption
+-  Passwords hashed with bcrypt (10 rounds)
+-  JWT tokens with expiration
+-  Email verification required
+-  Rate limiting on auth endpoints (5 req/15min)
+-  CORS protection
+-  File size validation
+-  Environment variables for secrets
+-  HTTPS in production
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Future Improvements
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Things I'd like to add:
+- Password strength indicator
+- File sharing with encrypted links
+- Drag-and-drop upload
+- Upload progress bar
+- File preview for images
+- Toast notifications
+- Two-factor authentication
+- File version history
+- Multiple upload at a time
+- Folder creation 
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+MIT - Feel free to use this for learning!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Built by Akande Samad (Damsacool)** | [GitHub](https://github.com/Damsacool/SecureCloud)

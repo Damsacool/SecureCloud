@@ -1,0 +1,16 @@
+# Environment variables
+.env
+
+# Dependencies
+node_modules/
+
+# Local file uploads (S3 is primary storage)
+uploads/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
