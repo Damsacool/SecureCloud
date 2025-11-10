@@ -20,16 +20,21 @@ if (MONGODB_URI) {
 // CORS configuration - allow frontend access
 const allowedOrigins = [
     'http://localhost:3000',  // Local development
-    process.env.FRONTEND_URL  // Production frontend
+    'https://securecloud-azure.vercel.app',  // Production frontend
+    process.env.FRONTEND_URL  // Production frontend (from env var)
 ].filter(Boolean);
+
+console.log('🔒 CORS allowed origins:', allowedOrigins);
 
 app.use(cors({
     origin: function(origin, callback) {
+        console.log('📥 Request from origin:', origin);
         // Allow requests with no origin (mobile apps, Postman, etc.)
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
+            console.error('❌ CORS blocked origin:', origin);
             callback(new Error('Not allowed by CORS'));
         }
     },
