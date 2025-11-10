@@ -40,13 +40,13 @@ function LoginPage() {
 
     return (
         
-        <div className="auth-container">
-            <div className="auth-card">
+        <main className="auth-container">
+            <section className="auth-card" aria-label="Login form">
                 <div className="auth-title-logo">SecureCloud</div>
                 <h2 className="auth-title">Login to Your Account</h2>
                 
                 {error && (
-                    <div style={{ color: '#e63946', marginBottom: '15px', textAlign: 'center', fontWeight: 'bold' }}>
+                    <div role="alert" style={{ color: '#e63946', marginBottom: '15px', textAlign: 'center', fontWeight: 'bold' }}>
                         {error}
                     </div>
                 )}
@@ -61,6 +61,7 @@ function LoginPage() {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="user@securecloud.com"
                             required
+                            aria-required="true"
                         />
                     </div>
                     <div className="form-group">
@@ -72,6 +73,7 @@ function LoginPage() {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="********"
                             required
+                            aria-required="true"
                         />
                     </div>
                     
@@ -79,6 +81,7 @@ function LoginPage() {
                         type="submit"
                         className="auth-btn primary-auth-btn"
                         disabled={isSubmitting}
+                        aria-busy={isSubmitting}
                     >
                         {isSubmitting ? 'Logging In...' : 'Login'}
                     </button>
@@ -89,8 +92,8 @@ function LoginPage() {
                 <div className="secondary-auth-text">
                     Don't have an account? <Link to="/register">Sign Up</Link>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 

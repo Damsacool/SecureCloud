@@ -53,13 +53,13 @@ function RegistrationPage() {
     };
 
     return (
-        <div className="auth-container">
-            <div className="auth-card">
+        <main className="auth-container">
+            <section className="auth-card" aria-label="Registration form">
                 <div className="auth-title-logo">SecureCloud</div>
                 <h2 className="auth-title">Create Your Account</h2>
                 
                 {error && (
-                    <div style={{ color: '#e63946', marginBottom: '15px', textAlign: 'center', fontWeight: 'bold' }}>
+                    <div role="alert" style={{ color: '#e63946', marginBottom: '15px', textAlign: 'center', fontWeight: 'bold' }}>
                         {error}
                     </div>
                 )}
@@ -74,6 +74,7 @@ function RegistrationPage() {
                             onChange={(e) => setFullName(e.target.value)}
                             placeholder="Akande Samad"
                             required
+                            aria-required="true"
                         />
                     </div>
                     
@@ -86,6 +87,7 @@ function RegistrationPage() {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="user@email.com"
                             required
+                            aria-required="true"
                         />
                     </div>
                     <div className="form-group">
@@ -97,6 +99,7 @@ function RegistrationPage() {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="********"
                             required
+                            aria-required="true"
                         />
                     </div>
                     
@@ -109,6 +112,7 @@ function RegistrationPage() {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             placeholder="********"
                             required
+                            aria-required="true"
                         />
                     </div>
                     
@@ -116,6 +120,7 @@ function RegistrationPage() {
                         type="submit"
                         className="auth-btn primary-auth-btn"
                         disabled={isSubmitting}
+                        aria-busy={isSubmitting}
                     >
                         {isSubmitting ? 'Signing Up...' : 'Sign Up'}
                     </button>
@@ -124,8 +129,8 @@ function RegistrationPage() {
                 <div className="secondary-auth-text">
                     Already have an account? <Link to="/login">Login</Link>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 
