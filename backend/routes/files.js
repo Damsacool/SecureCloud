@@ -32,15 +32,15 @@ router.post('/upload', authMiddleware, async (req, res) => {
         return res.status(400).json({ message: 'Missing file metadata or encrypted content.' });
     }
 
-    // Validation: File size limit (25MB for encrypted content)
-    const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB
+    // Validation: File size limit (50MB for encrypted content)
+    const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
     if (fileSize > MAX_FILE_SIZE) {
-        return res.status(400).json({ message: 'File size exceeds 25MB limit.' });
+        return res.status(400).json({ message: 'File size exceeds 50MB limit.' });
     }
 
     // Validation: Encrypted content size
     const encryptedSize = Buffer.byteLength(encryptedContent, 'utf8');
-    if (encryptedSize > 50 * 1024 * 1024) { // 50MB for encrypted string
+    if (encryptedSize > 100 * 1024 * 1024) { // 100MB for encrypted string
         return res.status(400).json({ message: 'Encrypted content too large.' });
     }
 

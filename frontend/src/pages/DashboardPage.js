@@ -203,28 +203,35 @@ function DashboardPage() {
         </header>
 
         <div className="upload-section">
-          <div style={{ marginBottom: 12 }}>
+          <div className="passphrase-container">
             <input
               type="password"
               placeholder="Enter passphrase (used to encrypt/decrypt)"
               value={passphrase}
               onChange={(e) => setPassphrase(e.target.value)}
-              style={{ padding: '10px', width: '100%', maxWidth: 420, borderRadius: 8 }}
+              className="passphrase-input"
             />
-            <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div className="passphrase-checkbox">
               <input
                 id="remember-passphrase"
                 type="checkbox"
                 checked={rememberPassphrase}
                 onChange={(e) => setRememberPassphrase(e.target.checked)}
               />
-              <label htmlFor="remember-passphrase" style={{ color: '#444' }}>
+              <label htmlFor="remember-passphrase">
                 Remember this passphrase on this device
               </label>
             </div>
           </div>
           <div className="file-upload">
-            <input type="file" id="file-upload" className="file-input" onChange={handleFileSelect} />
+            <input 
+              type="file" 
+              id="file-upload" 
+              className="file-input" 
+              onChange={handleFileSelect}
+              accept="*/*"
+              title="Select any file type (documents, images, videos, etc.)"
+            />
             <label htmlFor="file-upload" className="file-label">Choose file</label>
             <button className="upload-button" disabled={loading || !selectedFile} onClick={handleUploadClick}>
               {notice.includes('Uploading') ? 'Uploading...' : notice.includes('Downloading') ? 'Downloading...' : 'Upload'}

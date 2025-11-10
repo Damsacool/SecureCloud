@@ -40,7 +40,7 @@ router.post('/register', authLimiter, async (req, res) => {
         const existing = await User.findOne({ email: email.toLowerCase() });
         if (existing) return res.status(400).json({message: 'User already exists'});
 
-        const hashed = bcrypt.hashSync(password, 10);
+        const hashed = await bcrypt.hash(password, 10);
         const verificationToken = nanoid(32);
         
         const user = new User({
@@ -82,7 +82,7 @@ router.post('/login', authLimiter, async (req, res) => {
         const user = await User.findOne({ email: (email || '').toLowerCase() });
         if (!user) return res.status(400).json({ message: 'Invalid credentials' });
 
-        const match = bcrypt.compareSync(password, user.password);
+        const match = await bcrypt.compare(password, user.password);
         if (!match) return res.status(400).json({message: 'Invalid credentials'});
 
         const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });

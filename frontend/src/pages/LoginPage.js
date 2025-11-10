@@ -82,6 +82,7 @@ function LoginPage() {
                         className="auth-btn primary-auth-btn"
                         disabled={isSubmitting}
                         aria-busy={isSubmitting}
+                        style={{ opacity: isSubmitting ? 0.7 : 1 }}
                     >
                         {isSubmitting ? 'Logging In...' : 'Login'}
                     </button>

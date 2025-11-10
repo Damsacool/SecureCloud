@@ -493,6 +493,45 @@ footer {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+.passphrase-container {
+    margin-bottom: 1.5rem;
+}
+
+.passphrase-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 0.95em;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.passphrase-input:focus {
+    border-color: #7c4dff;
+    background-color: #fff;
+}
+
+.passphrase-checkbox {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.passphrase-checkbox label {
+    color: #666;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.passphrase-checkbox input[type="checkbox"] {
+    cursor: pointer;
+}
+
 .file-upload {
     display: flex;
     gap: 1rem;
@@ -763,6 +802,7 @@ footer {
         transform: translateX(-100%);
         box-shadow: 4px 0 15px rgba(0,0,0,0.2);
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
     
     .sidebar.sidebar-open {
@@ -771,6 +811,7 @@ footer {
     
     .sidebar .logo {
         margin-top: 20px;
+        margin-bottom: 1rem;
         font-size: 1.5rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid #e0e0e0;
@@ -781,15 +822,22 @@ footer {
     
     .nav-menu {
         flex-direction: column;
-        overflow-y: auto;
+        overflow-y: visible;
         gap: 0.5rem;
         padding-top: 1rem;
+        padding-bottom: 2rem; /* Extra space at bottom so logout is visible */
+        flex-grow: 0; /* Don't let it grow too much */
     }
     
     .nav-item {
         white-space: normal;
         padding: 0.75rem 1rem;
         justify-content: flex-start;
+    }
+    
+    .logout {
+        margin-top: 1rem;
+        margin-bottom: 2rem; /* Ensure it's visible when scrolling */
     }
     
     .dashboard-main {
@@ -810,6 +858,19 @@ footer {
     
     .upload-section {
         padding: 1.5rem 1rem;
+    }
+    
+    .passphrase-input {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+    
+    .passphrase-checkbox {
+        flex-wrap: wrap;
+    }
+    
+    .passphrase-checkbox label {
+        font-size: 0.85em;
     }
     
     .file-upload {

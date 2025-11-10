@@ -121,6 +121,7 @@ function RegistrationPage() {
                         className="auth-btn primary-auth-btn"
                         disabled={isSubmitting}
                         aria-busy={isSubmitting}
+                        style={{ opacity: isSubmitting ? 0.7 : 1 }}
                     >
                         {isSubmitting ? 'Signing Up...' : 'Sign Up'}
                     </button>
