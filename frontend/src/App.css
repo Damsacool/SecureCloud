@@ -619,16 +619,16 @@ footer {
         overflow-x: hidden;
     }
     
-    /* Navbar */
+    /* Navbar - make all items fit */
     .navbar {
         flex-direction: row;
         justify-content: space-between;
-        padding: 1rem 5vw;
+        padding: 1rem 4vw;
         flex-wrap: wrap;
     }
     
     .navbar .logo {
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
     
     .nav-links {
@@ -643,12 +643,15 @@ footer {
         margin-left: 0;
         text-align: center;
         padding: 0.5rem;
+        font-size: 0.95em;
     }
     
     .nav-links .nav-login-btn {
         margin-left: 0;
         width: 100%;
+        max-width: 100%;
         padding: 0.7rem 1rem;
+        box-sizing: border-box;
     }
     
     /* Hero */
@@ -658,7 +661,7 @@ footer {
     }
     
     .hero h1 {
-        font-size: 1.8em;
+        font-size: 1.6em;
         line-height: 1.3;
         margin-bottom: 15px;
     }
@@ -671,21 +674,23 @@ footer {
     }
     
     .cta-buttons {
-        flex-direction: column;
-        gap: 12px;
+        flex-direction: row;
+        gap: 10px;
         margin-bottom: 40px;
+        justify-content: center;
     }
     
     .cta-buttons .cta-btn {
-        width: 100%;
-        padding: 12px 20px;
-        font-size: 1em;
+        flex: 1;
+        padding: 10px 15px;
+        font-size: 0.9em;
+        max-width: 48%;
     }
     
-    /* Features */
+    /* Features - make cards fit screen */
     .features-section {
         flex-direction: column;
-        padding: 1rem;
+        padding: 0 1rem;
         gap: 20px;
         margin: 20px auto;
     }
@@ -695,6 +700,7 @@ footer {
         max-width: 100%;
         padding: 25px 20px;
         min-height: auto;
+        box-sizing: border-box;
     }
     
     .feature-icon {
@@ -765,9 +771,12 @@ footer {
     
     .sidebar .logo {
         margin-top: 20px;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid #e0e0e0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     
     .nav-menu {
@@ -811,7 +820,12 @@ footer {
     
     .file-label, .upload-button {
         width: 100%;
+        max-width: 100%;
         text-align: center;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     
     .files-section {

@@ -83,6 +83,7 @@ function DashboardPage() {
         return;
       }
       setLoading(true);
+      setNotice('Uploading...');
       const { file: saved } = await fileService.uploadEncrypted(selectedFile, passphrase);
       setFiles(prev => [
         ...prev,
@@ -97,8 +98,11 @@ function DashboardPage() {
       // clear any file input value
       const input = document.getElementById('file-upload');
       if (input) input.value = '';
+      setNotice('Upload successful!');
+      setTimeout(() => setNotice(''), 2000);
     } catch (e) {
       setError(e.message || 'Upload failed');
+      setNotice('');
     } finally {
       setLoading(false);
     }
@@ -117,6 +121,7 @@ function DashboardPage() {
         return;
       }
       setLoading(true);
+      setNotice('Downloading...');
       const { blob, fileName } = await fileService.downloadAndDecrypt(id, passphrase);
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -124,8 +129,11 @@ function DashboardPage() {
       a.download = fileName;
       a.click();
       window.URL.revokeObjectURL(url);
+      setNotice('Download successful!');
+      setTimeout(() => setNotice(''), 2000);
     } catch (e) {
       setError(e.message || 'Download failed');
+      setNotice('');
     } finally {
       setLoading(false);
     }
@@ -219,7 +227,7 @@ function DashboardPage() {
             <input type="file" id="file-upload" className="file-input" onChange={handleFileSelect} />
             <label htmlFor="file-upload" className="file-label">Choose file</label>
             <button className="upload-button" disabled={loading || !selectedFile} onClick={handleUploadClick}>
-              {loading ? 'Uploading...' : 'Upload'}
+              {notice.includes('Uploading') ? 'Uploading...' : notice.includes('Downloading') ? 'Downloading...' : 'Upload'}
             </button>
           </div>
           {selectedFile && (
