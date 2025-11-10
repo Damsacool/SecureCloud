@@ -12,6 +12,7 @@ function DashboardPage() {
   const [infoOpen, setInfoOpen] = useState(false);
   const [notice, setNotice] = useState('');
   const [error, setError] = useState('');
+  const [sidebarOpen, setSidebarOpen] = useState(false); // Hamburger menu state
   
   const navigate = useNavigate();
   
@@ -145,7 +146,24 @@ function DashboardPage() {
 
   return (
     <div className="dashboard-container">
-      <div className="sidebar">
+      {/* Hamburger menu button - only visible on mobile */}
+      <button 
+        className="hamburger-menu"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        aria-label="Toggle menu"
+      >
+        {sidebarOpen ? '✕' : '☰'}
+      </button>
+
+      {/* Overlay to close sidebar when clicking outside on mobile */}
+      {sidebarOpen && (
+        <div 
+          className="sidebar-overlay" 
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      <div className={`sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="logo">SecureCloud</div>
         <nav className="nav-menu">
           <button type="button" className="nav-item active">
