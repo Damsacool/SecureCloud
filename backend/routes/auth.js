@@ -40,7 +40,8 @@ router.post('/register', authLimiter, async (req, res) => {
         const existing = await User.findOne({ email: email.toLowerCase() });
         if (existing) return res.status(400).json({message: 'User already exists'});
 
-        const hashed = await bcrypt.hash(password, 10);
+        // Used 8 rounds for faster hashing on free tier servers
+        const hashed = await bcrypt.hash(password, 8);
         const verificationToken = nanoid(32);
         
         const user = new User({
@@ -210,7 +211,7 @@ router.post('/reset-password', async (req, res) => {
             return res.status(400).json({ message: 'Reset token has expired' });
         }
 
-        user.password = bcrypt.hashSync(newPassword, 10);
+        user.password = await bcrypt.hash(newPassword, 8);
         user.passwordResetToken = null;
         user.passwordResetExpires = null;
         await user.save();

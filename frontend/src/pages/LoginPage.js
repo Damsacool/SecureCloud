@@ -50,6 +50,21 @@ function LoginPage() {
                         {error}
                     </div>
                 )}
+                
+                {isSubmitting && (
+                    <div style={{ 
+                        background: '#e3f2fd', 
+                        border: '1px solid #2196f3', 
+                        borderRadius: '8px', 
+                        padding: '12px', 
+                        marginBottom: '15px', 
+                        textAlign: 'center',
+                        color: '#1976d2',
+                        fontWeight: '500'
+                    }}>
+                        Logging you in... Please wait.
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
